@@ -1,7 +1,11 @@
 ## http://docs.aws.amazon.com/AWSJavaScriptSDK/guide/browser-configuring.html
 AWS.config.update accessKeyId: 'AKIAJQJUR7OMQKPHEPZA', secretAccessKey: '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'
 # AWS.config.region = 'us-west-1'
-bucket = new AWS.S3 params: Bucket: 'transfer.tesera.com'
+bucket = new AWS.S3
+	params:
+		Bucket: 'transfer.tesera.com'
+	httpOptions:
+		timeout: 0
 
 
 TAG = '[testing] -'
