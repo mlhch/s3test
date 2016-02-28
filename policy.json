@@ -1,0 +1,44 @@
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Action": [
+				"s3:ListBucket"
+			],
+			"Resource": [
+				"arn:aws:s3:::transfer.tesera.com"
+			],
+			"Effect": "Allow",
+			"Condition": {
+				"StringLike": {
+					"s3:prefix": [
+						"test/*"
+					]
+				}
+			},
+			"Sid": "TestUserListHisUploadedFiles"
+		},
+		{
+			"Action": [
+				"s3:GetObject",
+				"s3:PutObject",
+				"s3:DeleteObject"
+			],
+			"Resource": [
+				"arn:aws:s3:::transfer.tesera.com/test/*"
+			],
+			"Effect": "Allow",
+			"Sid": "TestUserManagerHisFiles"
+		},
+		{
+			"Action": [
+				"s3:ListBucketMultipartUploads"
+			],
+			"Resource": [
+				"arn:aws:s3:::transfer.tesera.com"
+			],
+			"Effect": "Allow",
+			"Sid": "TestUserListHisMultipartUploadingFiles"
+		}
+	]
+}
